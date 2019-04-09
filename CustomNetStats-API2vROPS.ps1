@@ -109,8 +109,7 @@ if($vcCreds -gt ""){
 
 
 [DateTime]$NowDate = (Get-date)
-[int64]$NowDateEpoc = Get-Date -Date $NowDate.ToUniversalTime() -UFormat %s
-$NowDateEpoc = $NowDateEpoc * 1000
+[int64]$NowDateEpoc = (([DateTimeOffset](Get-Date)).ToUniversalTime().ToUnixTimeMilliseconds())
 
 #Take all certs.
 add-type @"
